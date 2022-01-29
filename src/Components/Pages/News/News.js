@@ -1,6 +1,6 @@
 import React from 'react';
 import { GamesProvider } from '../../../contexts/games';
-import { CardNews } from '../../Card/CardNews';
+import { CardNews } from '../../Cards/CardNews';
 
 export const News = () => {
   return (

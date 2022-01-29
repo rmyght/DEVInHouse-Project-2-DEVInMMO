@@ -1,6 +1,6 @@
 import { useGames } from "../../contexts/games";
 
-export const Card = () => {
+export const CardGames = () => {
   const { gamesList } = useGames();
   console.log(gamesList);
   return (

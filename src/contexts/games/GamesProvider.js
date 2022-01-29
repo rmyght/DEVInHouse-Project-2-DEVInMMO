@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { GamesContext } from ".";
 import { fetchGames } from "../../services/games-service";
 
@@ -10,7 +10,7 @@ export const GamesProvider = ({ children, type }) => {
       const lista = await fetchGames(type);
       setGamesList(lista);
     })();
-  }, []);
+  }, [type]);
 
   return (
     <GamesContext.Provider value={{ gamesList }}>
