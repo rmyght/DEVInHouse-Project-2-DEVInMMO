@@ -7,6 +7,7 @@ export const Games = () => {
     <>
       {/* test='id=452' */}
       <GamesProvider type='games'>
+        <h1>Games</h1>
         <CardGames />
       </GamesProvider>
     </>

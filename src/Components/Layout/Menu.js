@@ -1,10 +1,10 @@
 export const Menu = () => {
   return (
     <ul>
-      <a href='/'><li>Home</li></a>
-      <a href='/news'><li>Notícias</li></a>
-      <a href='/games'><li>MMO Games</li></a>
-      <a href='/about'><li>Sobre</li></a>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/news'>News</a></li>
+      <li><a href='/games'>MMO Games</a></li>
+      <li><a href='/about'>About</a></li>
     </ul>
   );
 }

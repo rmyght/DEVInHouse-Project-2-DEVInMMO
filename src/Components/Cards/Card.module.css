@@ -1,4 +1,4 @@
-* {
+section {
   box-sizing: border-box;
 }
 
@@ -15,45 +15,84 @@
   flex-wrap: wrap;
 }
 
+.a:link {
+  text-decoration: none;
+  color: rgb(27, 27, 27);
+}
+
+.a:visited {
+  color: rgb(139, 139, 139);
+}
+
 .li {
   /* border: 3px solid rgba(0, 0, 0, 0.1); */
+  background-color: rgb(247, 247, 247);
   border-radius: 6px;
   box-shadow: 1px 1px 6px 6px rgba(169, 169, 169, 0.25);
   padding: 15px;
   margin: 20px;
   width: 20%;
-  transition: all 0.2s ease-out;
+  transition: all 0.1s ease-out;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* flex-direction: column; */
 }
 
 .li:hover {
   transform: translateY(-10px);
-  cursor: pointer;
+  /* cursor: pointer; */
   box-shadow: 1px 1px 6px 6px rgba(64, 64, 64, 0.40);
   /* border-bottom: 0px solid #A9A9A9; */
+  cursor: pointer;
 }
 
 .content {
-  width: 100%;
-  text-align: center;
+  /* width: 100%; */
+  /* text-align: center; */
   /* margin: 5px; */
-}
-
-.title {
-  /* margin: 5px;
-  margin-inline: 15px; */
-  font-size: 18px;
-}
-
-.sdesciption {
-  margin-inline: 20px;
-  text-align: justify;
-  font-size: 16px;
 }
 
 .img {
   /* border: 1px solid #ddd;
   border-radius: 2px;
   float: center; */
-  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0px;
   width: 100%;
+}
+
+.title {
+  /* margin: 5px;
+  margin-inline: 15px; */
+  text-align: justify;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sdesciption {
+  /* margin-inline: 20px; */
+  margin-top: 10px;
+  text-align: justify;
+  font-size: 14px;
+  /* Não sei se vou manter */
+  /* Não sei se vou manter */
+  /* opacity: 1;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out; */
+}
+
+.li:hover .sdesciption {
+  /* Não sei se vou manter */
+  /* Não sei se vou manter */
+  opacity: 1;
+  /* -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out; */
 }
