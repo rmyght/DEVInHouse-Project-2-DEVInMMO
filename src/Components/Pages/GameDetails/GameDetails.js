@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom"
 import { GamesProvider, useGames } from "../../../contexts/games"
 import { LoadingScreen } from "../../helper"
+import { DetailsPosts } from "./DetailsPost";
 
 const DetailsTable = ({ requirement }) => {
-  console.log(requirement)
+  console.log(requirement);
   return (
     <tbody>
       <tr>
@@ -30,11 +31,10 @@ const DetailsTable = ({ requirement }) => {
         <td>{requirement.storage}</td>
       </tr>
     </tbody>
-  )
-}
+  );
+};
 
 const DetailsConstruct = ({ game }) => {
-  console.log('TESTE::::::::::::', game.minimum_system_requirements)
   return (
     <>
       <img src={game.thumbnail} alt={`${game.title}`} />
@@ -46,26 +46,27 @@ const DetailsConstruct = ({ game }) => {
       <table style={{ border: "1px solid black" }}>
         {<DetailsTable requirement={game.minimum_system_requirements} />}
       </table>
+      <DetailsPosts gameid={game.id} />
     </>
-  )
-}
+  );
+};
 
 const DetailsLoad = () => {
   const { gamesList, loaded } = useGames();
-  console.log('Jogo: ', gamesList)
-  console.log(typeof (gamesList))
-  console.log(typeof (gamesList.minimum_system_requirements))
+  console.log('Jogo: ', gamesList);
+  console.log(typeof (gamesList));
+  console.log(typeof (gamesList.minimum_system_requirements));
   return (
     <>
       {loaded ? <DetailsConstruct game={gamesList} /> : <LoadingScreen />}
     </>
-  )
-}
+  );
+};
 
 export const GameDetails = () => {
-  const { id } = useParams()
-  console.log("Click OK")
-  console.log('itemid', id)
+  const { id } = useParams();
+  console.log("Click OK");
+  console.log('itemid', id);
   // game?id=452
   return (
     <>
@@ -74,5 +75,5 @@ export const GameDetails = () => {
         <DetailsLoad />
       </GamesProvider>
     </>
-  )
-}
+  );
+};
