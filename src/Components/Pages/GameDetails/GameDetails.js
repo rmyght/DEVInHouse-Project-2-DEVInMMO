@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { GamesProvider, useGames } from "../../../contexts/games"
 import { LoadingScreen } from "../../helper"
-import { DetailsPosts } from "./DetailsPost";
+import { DetailsPosts } from "./DetailsPosts";
 
 const DetailsTable = ({ requirement }) => {
   console.log(requirement);
@@ -46,7 +46,7 @@ const DetailsConstruct = ({ game }) => {
       <table style={{ border: "1px solid black" }}>
         {<DetailsTable requirement={game.minimum_system_requirements} />}
       </table>
-      <DetailsPosts gameid={game.id} />
+      <DetailsPosts LSKey="game-posts" gameid={game.id} />
     </>
   );
 };
