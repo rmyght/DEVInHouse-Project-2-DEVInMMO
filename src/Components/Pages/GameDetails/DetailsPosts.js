@@ -2,6 +2,8 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { PostForm } from "../../Formik/PostForm";
 
+import * as Yup from 'yup';
+
 // Retorna o número do ID da Task
 function _returnNewPostNumber(number) {
   if (number) return parseInt(number) + 1;
@@ -54,13 +56,18 @@ const PostButton = ({ LSKey, elp, gameid, reload, setReload }) => {
     resetForm();
     setReload(!reload);
   };
+  const schema = Yup.object().shape({
+    username: Yup.string().required('Campo obrigatório'),
+    text: Yup.string().required('Campo obrigatório').max(30, 'Máximo 30 caracteres'),
+  });
   return (
     // <button type='submit' onClick={handleAddPost}>
     //   Add Post
     // </button>
-    <Formik initialValues={{username: '', text: ''}} onSubmit={handleAddPost}>
+    <Formik initialValues={{username: '', text: ''}} onSubmit={handleAddPost} validationSchema={schema} validateOnMount>
       {({ isSubmitting, isValid }) => (
         <Form>
+          {console.log('isValid', isValid)}
           <Field name="username" placeholder="Nome" />
           <ErrorMessage name="username" style={{ color: 'red' }} component="span" />
           <Field name="text" placeholder="Texto" />
@@ -116,7 +123,7 @@ export const DetailsPosts = ({ LSKey, gameid }) => {
   //   console.log();
   // }, [reload]);
   return (
-    <p>
+    <>
       {/* <PostForm /> */}
       <p />
       <PostButton elp={existsLocalPosts} LSKey={LSKey} gameid={gameid} reload={reload} setReload={setReload} />
@@ -124,6 +131,6 @@ export const DetailsPosts = ({ LSKey, gameid }) => {
         <h1>Comentários:</h1>
         {existsLocalGamePosts ? Object.keys(existsLocalGamePosts).map((item, index) => <CreatePosts LSKey={LSKey} reload={reload} setReload={setReload} key={index} elp={existsLocalPosts} post={existsLocalGamePosts[item]} item={item} gameid={gameid} />) : <h3>'Não Existe Posts'</h3>}
       </section>
-    </p>
+    </>
   );
 };
