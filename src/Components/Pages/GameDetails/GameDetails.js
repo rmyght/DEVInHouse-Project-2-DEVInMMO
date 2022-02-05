@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom"
 import { GamesProvider, useGames } from "../../../contexts/games"
 import { LoadingScreen } from "../../helper"
@@ -34,10 +35,19 @@ const DetailsTable = ({ requirement }) => {
   );
 };
 
+const SlideShow = ({ ss, tnail, actualimg, setActualimg }) => {
+  return (
+    <img onClick={() => setActualimg(actualimg === ss.image ? tnail : ss.image)} src={actualimg === ss.image ? tnail : ss.image} alt={ss.image} width="10%" height="10%" />
+  );
+};
+
 const DetailsConstruct = ({ game }) => {
+  const [actualimg, setActualimg] = useState(game.thumbnail);
   return (
     <>
-      <img src={game.thumbnail} alt={`${game.title}`} />
+      <img src={actualimg} alt={game.title} width="350px" height="100%" />
+      {/* <SlideShow ss={game.screenshots} /> */}
+      {game.screenshots.map((ss, index) => <SlideShow key={ss.id} ss={ss} tnail={game.thumbnail} actualimg={actualimg} setActualimg={setActualimg} />)}
       <p>{`Title: ${game.title}`}</p>
       <p>{`Publisher: ${game.publisher}`}</p>
       <p>{`Plataform: ${game.platform}`}</p>
