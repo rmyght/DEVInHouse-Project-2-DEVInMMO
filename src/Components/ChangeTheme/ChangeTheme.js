@@ -8,6 +8,6 @@ export const ChangeTheme = ({ main, setMain }) => {
   }
   const ico = main ? darkMode : lightMode
   return (
-    <ChangeThemeIco onClick={handleChangeTheme} src={ico} alt="change" />
+    <ChangeThemeIco onClick={handleChangeTheme} src={ico} alt="Change Theme Icons" />
   );
 };

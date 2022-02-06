@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom"
 import { GamesProvider, useGames } from "../../../contexts/games"
+import { LocalStorageProvider } from "../../../contexts/localStorage";
 import { LoadingScreen } from "../LoadingScreen"
 import { DetailsPosts } from "./DetailsPosts";
 import { Header } from "./GameDetails.styles";
@@ -57,16 +58,16 @@ const DetailsConstruct = ({ game }) => {
       <table style={{ border: "1px solid black" }}>
         {<DetailsTable requirement={game.minimum_system_requirements} />}
       </table>
-      <DetailsPosts LSKey="game-posts" gameid={game.id} />
+      <DetailsPosts gameid={game.id} />
     </>
   );
 };
 
-const DetailsLoad = () => {
+const ShowDetails = () => {
   const { filteredGamesList, loaded } = useGames();
-  console.log('Jogo: ', filteredGamesList);
-  console.log(typeof (filteredGamesList));
-  console.log(typeof (filteredGamesList.minimum_system_requirements));
+  // console.log('Jogo: ', filteredGamesList);
+  // console.log(typeof (filteredGamesList));
+  // console.log(typeof (filteredGamesList.minimum_system_requirements));
   return (
     <>
       {loaded ? <DetailsConstruct game={filteredGamesList} /> : <LoadingScreen />}
@@ -76,14 +77,15 @@ const DetailsLoad = () => {
 
 export const GameDetails = () => {
   const { id } = useParams();
-  console.log("Click OK");
-  console.log('itemid', id);
-  // game?id=452
+  // console.log("Click OK");
+  // console.log('itemid', id);
   return (
     <>
       <GamesProvider type={`game?id=${id}`}>
-        <Header>Game Details</Header>
-        <DetailsLoad />
+        <LocalStorageProvider>
+          <Header>Game Details</Header>
+          <ShowDetails />
+        </LocalStorageProvider>
       </GamesProvider>
     </>
   );

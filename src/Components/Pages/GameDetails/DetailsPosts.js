@@ -1,97 +1,10 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
-import { PostForm } from "../../Formik/PostForm";
+import { PostFormik } from "../../PostFormik/PostForm";
+import { existsLS, existsLSGame, setItemLS } from "../../helper/utilLocalStorage";
+import { useLocalStorage } from "../../../contexts/localStorage";
+import { LikeButtons } from "../../LikeButtons/LikeButtons";
 
-import * as Yup from 'yup';
-
-// Retorna o número do ID da Task
-function _returnNewPostNumber(number) {
-  if (number) return parseInt(number) + 1;
-  return 1;
-};
-
-// Verifica se já existe uma key no Local Storage
-const _existsLS = (key) => localStorage.getItem(key);
-
-// Verifica se já existe determinado número de jogo no Local Storage
-const _existsLSGame = (localPosts, gameid) => {
-  let localStorage = JSON.parse(localPosts);
-  return localStorage[gameid]
-};
-
-// Seta um item em Local Storage
-function _setItemLS(key, item) {
-  localStorage.setItem(key, item);
-};
-
-const PostButton = ({ LSKey, elp, gameid, reload, setReload }) => {
-  const handleAddPost = ({ username, text }, { resetForm }) => {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Add Post Button Click');
-    console.log('Qual o Game ID? ', gameid);
-    console.log('Existe o Local Storage Posts? ', elp);
-    console.log('username', username)
-    console.log('text', text)
-    if (elp) {
-      if (_existsLSGame(elp, gameid)) {
-        console.log(`O GameID ${gameid} existe, adicionando um novo Comentário`);
-        let newLocalPost = JSON.parse(elp);
-        let newPostID = _returnNewPostNumber(Object.keys(newLocalPost[gameid]).length);
-        console.log('newPostID', newPostID);
-        newLocalPost[gameid] = { ...newLocalPost[gameid], [`post-${newPostID}`]: { username: username, text: text, likes: 0 } };
-        console.log('Novo post adicionado no game', elp);
-        _setItemLS(LSKey, JSON.stringify(newLocalPost));
-      } else {
-        console.log(`O GameID ${gameid} NÃO existe, criando o GameID no LocalStorage e adicionando o novo Comentário`);
-        let newGameLocalPost = JSON.parse(elp);
-        const newPostID = 'post-1';
-        newGameLocalPost = { ...newGameLocalPost, [`${gameid}`]: { [`${newPostID}`]: { username: username, text: text, likes: 0 } } };
-        _setItemLS(LSKey, JSON.stringify(newGameLocalPost));
-      }
-    } else {
-      console.log('Criando o Local Storage Posts e Adicionando o Comentário');
-      const newPostID = 'post-1';
-      let objectTask = { [`${gameid}`]: { [`${newPostID}`]: { username: username, text: text, likes: 0 } } };
-      _setItemLS(LSKey, JSON.stringify(objectTask));
-    };
-    resetForm();
-    setReload(!reload);
-  };
-  const schema = Yup.object().shape({
-    username: Yup.string().required('Campo obrigatório'),
-    text: Yup.string().required('Campo obrigatório').max(30, 'Máximo 30 caracteres'),
-  });
-  return (
-    <Formik initialValues={{username: '', text: ''}} onSubmit={handleAddPost} validationSchema={schema} validateOnMount>
-      {({ isSubmitting, isValid }) => (
-        <Form>
-          {console.log('isValid', isValid)}
-          <Field name="username" placeholder="Nome" />
-          <ErrorMessage name="username" style={{ color: 'red' }} component="span" />
-          <Field name="text" placeholder="Texto" />
-          <ErrorMessage name="text" style={{ color: 'red' }} component="span" />
-          <button type='submit' disabled={isSubmitting || !isValid}> Add Post</button>
-        </Form>
-      )}
-    </Formik>
-  );
-};
-
-const LikesButtons = ({ type, LSKey, reload, setReload, elp, post, item, gameid }) => {
-  const handleLikePost = () => {
-    let newLikeGamePost = JSON.parse(elp);
-    const newSum = parseInt(post.likes) + (type === 'Like' ? 1 : -1)
-    newLikeGamePost[gameid] = { ...newLikeGamePost[gameid], [`${item}`]: { username: post.username, text: post.text, likes: newSum } };
-    _setItemLS(LSKey, JSON.stringify(newLikeGamePost));
-    setReload(!reload);
-  }
-  return (
-    <>
-      <button onClick={handleLikePost}>{type}</button>
-    </>
-  );
-};
-
-const CreatePosts = ({ LSKey, reload, setReload, elp, post, item, gameid }) => {
+const GameComments = ({ LSKey, reload, setReload, elp, post, item, gameid }) => {
   console.log('item: ', item)
   console.log('POST:', post);
   return (
@@ -99,18 +12,19 @@ const CreatePosts = ({ LSKey, reload, setReload, elp, post, item, gameid }) => {
       <p>Nome: {post.username}</p>
       <p>Comentário:: {post.text}</p>
       <p>{post.likes}</p>
-      <LikesButtons type='Like' LSKey={LSKey} reload={reload} setReload={setReload} elp={elp} post={post} item={item} gameid={gameid} />
-      <LikesButtons type='Dislike' LSKey={LSKey} reload={reload} setReload={setReload} elp={elp} post={post} item={item} gameid={gameid} />
+      <LikeButtons type='Like' LSKey={LSKey} reload={reload} setReload={setReload} elp={elp} post={post} item={item} gameid={gameid} />
+      <LikeButtons type='Dislike' LSKey={LSKey} reload={reload} setReload={setReload} elp={elp} post={post} item={item} gameid={gameid} />
     </div>
   )
 }
 
-export const DetailsPosts = ({ LSKey, gameid }) => {
+export const DetailsPosts = ({ gameid }) => {
   console.log("Criando Posts");
-  const existsLocalPosts = _existsLS(LSKey);
+  const { LSKey } = useLocalStorage();
+  const existsLocalPosts = existsLS(LSKey);
   let existsLocalGamePosts = false;
   if (existsLocalPosts) {
-    existsLocalGamePosts = _existsLSGame(existsLocalPosts, gameid);
+    existsLocalGamePosts = existsLSGame(existsLocalPosts, gameid);
     console.log(existsLocalGamePosts)
   };
   console.log('existsLocalGamePosts: ', existsLocalGamePosts)
@@ -122,10 +36,10 @@ export const DetailsPosts = ({ LSKey, gameid }) => {
     <>
       {/* <PostForm /> */}
       <p />
-      <PostButton elp={existsLocalPosts} LSKey={LSKey} gameid={gameid} reload={reload} setReload={setReload} />
+      <PostFormik elp={existsLocalPosts} LSKey={LSKey} gameid={gameid} reload={reload} setReload={setReload} />
       <section>
-        <h1>Comentários:</h1>
-        {existsLocalGamePosts ? Object.keys(existsLocalGamePosts).map((item, index) => <CreatePosts LSKey={LSKey} reload={reload} setReload={setReload} key={index} elp={existsLocalPosts} post={existsLocalGamePosts[item]} item={item} gameid={gameid} />) : <h3>'Não Existe Posts'</h3>}
+        <h1>Comments:</h1>
+        {existsLocalGamePosts ? Object.keys(existsLocalGamePosts).map((item, index) => <GameComments LSKey={LSKey} reload={reload} setReload={setReload} key={index} elp={existsLocalPosts} post={existsLocalGamePosts[item]} item={item} gameid={gameid} />) : <h3>'Não Existe Posts'</h3>}
       </section>
     </>
   );

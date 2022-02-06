@@ -54,7 +54,7 @@ export const CardTitle = styled.div`
 
 export const CardSDescription = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  max-width: 40ch;
+  max-width: 35ch;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

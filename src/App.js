@@ -6,6 +6,7 @@ import { GlobalStyle } from './themes/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { myDarkTheme, myMainTheme } from './themes/themes';
 import { ChangeTheme } from './Components/ChangeTheme/ChangeTheme';
+import { HorizontalLine } from './Components/HorizontalLine/HorizontalLine';
 
 function App() {
   const [main, setMain] = useState(true);
@@ -13,7 +14,7 @@ function App() {
     <ThemeProvider theme={main ? myMainTheme : myDarkTheme}>
       <GlobalStyle />
       <Menu />
-      <hr style={{height: 5}} />
+      <HorizontalLine />
       <ChangeTheme main={main} setMain={setMain} />
       <BrowserRouter>
         <Router />

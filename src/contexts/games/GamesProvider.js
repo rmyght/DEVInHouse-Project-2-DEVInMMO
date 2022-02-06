@@ -10,7 +10,7 @@ export const GamesProvider = ({ children, type }) => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const games = useRef([]);
-  const needFilters = ['games', 'latestnews'].indexOf(type) >= 0 ? true : false
+  const needFilters = ['games', 'latestnews'].indexOf(type) >= 0 ? true : false;
 
   useEffect(() => {
     // IIFE Imediately Invoked Function Expression
