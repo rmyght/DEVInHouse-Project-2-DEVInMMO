@@ -2,7 +2,7 @@ import { useGames } from "../../contexts/games";
 
 export const PageSystem = () => {
   const { games, page, setPage } = useGames();
-  const maxPage = Math.ceil(Object.keys(games.current).length / 20);
+  const maxPage = Math.ceil(Object.keys(games.current).length / 12);
   let disabledPrevPage;
   let disabledNextPage;
   page <= 1 ? disabledPrevPage = true : disabledPrevPage = false;
@@ -13,5 +13,5 @@ export const PageSystem = () => {
       <button disabled={disabledPrevPage} onClick={() => setPage(page - 1)}>PrevPage</button>
       <button disabled={disabledNextPage} onClick={() => setPage(page + 1)}>NextPage</button>
     </>
-  )
-}
+  );
+};

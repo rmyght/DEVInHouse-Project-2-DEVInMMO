@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { GamesContext } from ".";
-import { filterListByPage } from "../../Components/helper/utilGames";
+import { filterListByPage, filterListByTerm } from "../../Components/helper/utilGames";
 import { fetchGames } from "../../services/games-service";
 
 
@@ -8,6 +8,7 @@ export const GamesProvider = ({ children, type }) => {
   const [filteredGamesList, setFilteredGamesList] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
   const games = useRef([]);
 
   useEffect(() => {
@@ -23,11 +24,14 @@ export const GamesProvider = ({ children, type }) => {
 
   useEffect(() => {
     setFilteredGamesList(filterListByPage(games.current, page));
-    console.log("Gerando nova LISTA")
   }, [page]);
 
+  useEffect(() => {
+    setFilteredGamesList(filterListByTerm(games.current, search));
+  }, [search]);
+
   return (
-    <GamesContext.Provider value={{ filteredGamesList, games, loaded, page, setPage}}>
+    <GamesContext.Provider value={{ filteredGamesList, games, loaded, page, setPage, setSearch}}>
       {children}
     </GamesContext.Provider>
   );

@@ -1,1 +1,1 @@
-export * from './PageSystem'
+export * from './PageSystem';
