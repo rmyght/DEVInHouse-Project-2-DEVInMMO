@@ -3,16 +3,15 @@ import { GamesProvider } from '../../../contexts/games';
 import { CardNews } from '../../Cards/CardNews';
 import { PageSystem } from '../../PageSystem/PageSystem';
 import { SearchSystem } from '../../SearchSystem/SearchSystem';
+import { Header } from "./News.styles";
 
 export const News = () => {
   return (
-    <>
-      <GamesProvider type='latestnews'>
-        <h1>News</h1>
-        <SearchSystem />
-        <PageSystem />
-        <CardNews />
-      </GamesProvider>
-    </>
+    <GamesProvider type='latestnews'>
+      <Header>News</Header>
+      <SearchSystem />
+      <PageSystem />
+      <CardNews />
+    </GamesProvider>
   );
 };

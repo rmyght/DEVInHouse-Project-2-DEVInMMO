@@ -46,12 +46,14 @@ export const CardImg = styled.img`
   width: 100%;
 `
 export const CardTitle = styled.div`
+  color: ${({ theme }) => theme.colors.text};
   text-align: justify;
   font-size: 18px;
   font-weight: bold;
 `
 
 export const CardSDescription = styled.div`
+  color: ${({ theme }) => theme.colors.text};
   max-width: 40ch;
   overflow: hidden;
   text-overflow: ellipsis;

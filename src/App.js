@@ -13,6 +13,7 @@ function App() {
     <ThemeProvider theme={main ? myMainTheme : myDarkTheme}>
       <GlobalStyle />
       <Menu />
+      <hr style={{height: 5}} />
       <ChangeTheme main={main} setMain={setMain} />
       <BrowserRouter>
         <Router />

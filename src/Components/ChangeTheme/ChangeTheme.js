@@ -1,9 +1,13 @@
+import { ChangeThemeIco } from "./ChangeTheme.styles"
+import darkMode from "./icons/dark_mode.svg"
+import lightMode from "./icons/light_mode.svg"
+
 export const ChangeTheme = ({ main, setMain }) => {
   const handleChangeTheme = () => {
     setMain(!main)
   }
-  const text = main ? 'Toggle Dark Theme' : 'Toggle Main Theme'
+  const ico = main ? darkMode : lightMode
   return (
-    <button onClick={handleChangeTheme}>{text}</button>
-  )
-}
+    <ChangeThemeIco onClick={handleChangeTheme} src={ico} alt="change" />
+  );
+};

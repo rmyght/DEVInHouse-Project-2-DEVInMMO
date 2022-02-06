@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { GamesProvider, useGames } from "../../../contexts/games"
 import { LoadingScreen } from "../LoadingScreen"
 import { DetailsPosts } from "./DetailsPosts";
+import { Header } from "./GameDetails.styles";
 
 const DetailsTable = ({ requirement }) => {
   console.log(requirement);
@@ -81,7 +82,7 @@ export const GameDetails = () => {
   return (
     <>
       <GamesProvider type={`game?id=${id}`}>
-        <h1>Game Details</h1>
+        <Header>Game Details</Header>
         <DetailsLoad />
       </GamesProvider>
     </>

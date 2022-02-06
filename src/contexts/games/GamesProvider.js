@@ -10,26 +10,27 @@ export const GamesProvider = ({ children, type }) => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const games = useRef([]);
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TYPE 2', type)
+  const needFilters = ['games', 'latestnews'].indexOf(type) >= 0 ? true : false
 
   useEffect(() => {
     // IIFE Imediately Invoked Function Expression
     (async () => {
       const list = await fetchGames(type);
       games.current = list;
-      setFilteredGamesList(filterListByPage(games.current, page));
+      setFilteredGamesList(needFilters ? filterListByPage(games.current, page) : games.current);
       setLoaded(true);
     })();
     //eslint-disable-next-line
   }, [type]);
 
   useEffect(() => {
-    setFilteredGamesList(filterListByPage(games.current, page));
+    setFilteredGamesList(needFilters ? filterListByPage(games.current, page) : games.current);
     //eslint-disable-next-line
   }, [page]);
 
   useEffect(() => {
-    setFilteredGamesList(filterListByTerm(games.current, search));
+    setFilteredGamesList(needFilters ? filterListByTerm(games.current, search) : games.current);
+    //eslint-disable-next-line
   }, [search]);
 
   return (
