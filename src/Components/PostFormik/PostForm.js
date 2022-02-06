@@ -28,7 +28,7 @@ export const PostFormik = ({ LSKey, elp, gameid, reload, setReload }) => {
   const schema = Yup.object().shape({
     username: Yup.string().required('Required Field'),
     email: Yup.string().required('Required Field').email('Invalid E-Mail Format'),
-    text: Yup.string().required('Required Field').max(30, 'Max 30 characteres'),
+    text: Yup.string().required('Required Field').max(80, 'Max 80 characteres'),
   });
   return (
     <Formik initialValues={{ username: '', email: '', text: '' }} onSubmit={handleAddPost} validationSchema={schema} validateOnMount>
@@ -39,7 +39,7 @@ export const PostFormik = ({ LSKey, elp, gameid, reload, setReload }) => {
           <ErrorMessage name="username" style={{ color: 'red' }} component="span" />
           <Field name="email" placeholder="E-Mail" />
           <ErrorMessage name="email" style={{ color: 'red' }} component="span" />
-          <Field name="text" placeholder="Comment" />
+          <Field name="text" placeholder="Comment" component="textarea" />
           <ErrorMessage name="text" style={{ color: 'red' }} component="span" />
           <button type='submit' disabled={isSubmitting || !isValid}> Add Post</button>
         </Form>

@@ -1,4 +1,5 @@
 import { useGames } from "../../contexts/games";
+import { ButtonPageSystem, DivPageSystem, HeaderPageSystem } from "./PageSystem.styles";
 
 export const PageSystem = () => {
   const { games, page, setPage } = useGames();
@@ -8,10 +9,10 @@ export const PageSystem = () => {
   page <= 1 ? disabledPrevPage = true : disabledPrevPage = false;
   page >= maxPage ? disabledNextPage = true : disabledNextPage = false;
   return (
-    <>
-      <h4>{`A Página Atual é ${page} de ${maxPage}`}</h4>
-      <button disabled={disabledPrevPage} onClick={() => setPage(page - 1)}>PrevPage</button>
-      <button disabled={disabledNextPage} onClick={() => setPage(page + 1)}>NextPage</button>
-    </>
+    <DivPageSystem>
+      <HeaderPageSystem>{`Page ${page} / ${maxPage}`}</HeaderPageSystem>
+      <ButtonPageSystem disabled={disabledPrevPage} onClick={() => setPage(page - 1)}>Prev</ButtonPageSystem>
+      <ButtonPageSystem disabled={disabledNextPage} onClick={() => setPage(page + 1)}>Next</ButtonPageSystem>
+    </DivPageSystem>
   );
 };

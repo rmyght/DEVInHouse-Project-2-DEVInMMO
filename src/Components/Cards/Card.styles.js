@@ -29,9 +29,7 @@ export const CardLi = styled.li`
   margin: 20px;
   width: 20%;
   transition: all 0.1s ease-out;
-  display: flex;
   justify-content: space-between;
-
   &:hover {
     transform: translateY(-10px);
     box-shadow: 1px 1px 6px 6px ${({ theme }) => theme.colors.card.hover};
@@ -46,19 +44,21 @@ export const CardImg = styled.img`
   width: 100%;
 `
 export const CardTitle = styled.div`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.main};
   text-align: justify;
-  font-size: 18px;
+  font-size: 1vw;
+  // font-size: 18px;
   font-weight: bold;
 `
 
 export const CardSDescription = styled.div`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.main};
   max-width: 35ch;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-top: 10px;
   text-align: justify;
-  font-size: 14px;
+  font-size: 0.8vw;
+  // font-size: 18px;
 `

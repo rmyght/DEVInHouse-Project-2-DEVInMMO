@@ -4,34 +4,34 @@ import { GamesProvider, useGames } from "../../../contexts/games"
 import { LocalStorageProvider } from "../../../contexts/localStorage";
 import { LoadingScreen } from "../LoadingScreen"
 import { DetailsPosts } from "./DetailsPosts";
-import { Header } from "./GameDetails.styles";
+import { Header, ReqInfo, ReqTitle, Table, TableTitle } from "./GameDetails.styles";
 
 const DetailsTable = ({ requirement }) => {
   console.log(requirement);
   return (
     <tbody>
       <tr>
-        <th colSpan={2}>Minimum System Requirements</th>
+        <TableTitle colSpan={2}>Minimum System Requirements</TableTitle>
       </tr>
       <tr>
-        <th>Operating System</th>
-        <td>{requirement.os}</td>
+        <ReqTitle>Operating System:</ReqTitle>
+        <ReqInfo>{requirement.os}</ReqInfo>
       </tr>
       <tr>
-        <th>Processor</th>
-        <td>{requirement.processor}</td>
+        <ReqTitle>Processor:</ReqTitle>
+        <ReqInfo>{requirement.processor}</ReqInfo>
       </tr>
       <tr>
-        <th>Memory</th>
-        <td>{requirement.memory}</td>
+        <ReqTitle>Memory:</ReqTitle>
+        <ReqInfo>{requirement.memory}</ReqInfo>
       </tr>
       <tr>
-        <th>Graphics</th>
-        <td>{requirement.graphics}</td>
+        <ReqTitle>Graphics:</ReqTitle>
+        <ReqInfo>{requirement.graphics}</ReqInfo>
       </tr>
       <tr>
-        <th>Storage</th>
-        <td>{requirement.storage}</td>
+        <ReqTitle>Storage:</ReqTitle>
+        <ReqInfo>{requirement.storage}</ReqInfo>
       </tr>
     </tbody>
   );
@@ -51,13 +51,14 @@ const DetailsConstruct = ({ game }) => {
       {/* <SlideShow ss={game.screenshots} /> */}
       {game.screenshots.map((ss) => <SlideShow key={ss.id} ss={ss} tnail={game.thumbnail} actualimg={actualimg} setActualimg={setActualimg} />)}
       <p>{`Title: ${game.title}`}</p>
+      <p>{`Release Date: ${game.release_date}`}</p>
       <p>{`Publisher: ${game.publisher}`}</p>
       <p>{`Plataform: ${game.platform}`}</p>
       <p>{`Status: ${game.status}`}</p>
       <p>{`Description: ${game.short_description}`}</p>
-      <table style={{ border: "1px solid black" }}>
-        {<DetailsTable requirement={game.minimum_system_requirements} />}
-      </table>
+      <Table>
+        <DetailsTable requirement={game.minimum_system_requirements} />
+      </Table>
       <DetailsPosts gameid={game.id} />
     </>
   );

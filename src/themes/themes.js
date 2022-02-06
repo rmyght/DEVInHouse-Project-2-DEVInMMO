@@ -1,6 +1,6 @@
 export const myMainTheme = {
   colors: {
-    text: '#000000',
+    main: '#000000',
     bgcolor: {
       main: '#fefefc',
       light: '#f7f7f7',
@@ -16,11 +16,14 @@ export const myMainTheme = {
       hover: 'rgba(64, 64, 64, 0.40)',
     },
   },
+  header: {
+    main: '3em',
+  },
 }
 
 export const myDarkTheme = {
   colors: {
-    text: '#ffffff',
+    main: '#ffffff',
     bgcolor: {
       main: '#010103',
       light: '#080808',
@@ -35,5 +38,8 @@ export const myDarkTheme = {
     card: {
       hover: 'rgba(191, 191, 191, 0.40)',
     },
+  },
+  header: {
+    main: '3em',
   },
 }

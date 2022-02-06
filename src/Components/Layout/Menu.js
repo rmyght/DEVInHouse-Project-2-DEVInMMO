@@ -7,7 +7,7 @@ export const Menu = () => {
     <UnListMenu>
       <ListItemMenu><LinkMenu href='/'>News</LinkMenu></ListItemMenu>
       <ListItemMenu><LinkMenu href='/games'>MMO Games</LinkMenu></ListItemMenu>
-      <ListItemMenu><LinkMenu href='/about'>About</LinkMenu></ListItemMenu>
+      {/* <ListItemMenu><LinkMenu href='/about'>About</LinkMenu></ListItemMenu> */}
     </UnListMenu>
   );
 }
