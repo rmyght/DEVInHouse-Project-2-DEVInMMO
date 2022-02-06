@@ -1,5 +1,5 @@
 import { useGames } from "../../contexts/games";
-import { LoadingScreen } from "../helper";
+import { LoadingScreen } from "../pages/LoadingScreen";
 import CardLoader from "../pages/Loader/Loader";
 import styles from './Card.module.css';
 
@@ -19,13 +19,13 @@ const NewsMount = ({ item }) => {
 }
 
 export const CardNews = () => {
-  const { gamesList, loaded } = useGames();
-  console.log('Toda listagem:', gamesList);
-  // console.log('Tipo da listagem:', typeof (gamesList));
+  const { filteredGamesList, loaded } = useGames();
+  console.log('Toda listagem:', filteredGamesList);
+  // console.log('Tipo da listagem:', typeof (filteredGamesList));
   return (
     <section>
-      {loaded ? <ul className={styles.ul}>{Object.keys(gamesList).length === 0 ? 'Nenhuma Notícia Encontrada' : gamesList.map((item) => <NewsMount key={item.id} item={item} />)}</ul> : <LoadingScreen /> }
-      {/* {loaded ? <ul className={styles.ul}>{Object.keys(gamesList).length === 0 ? 'Nenhuma Notícia Encontrada' : gamesList.map((item) => <NewsMount key={item.id} item={item} />)}</ul> : <CardLoader /> } */}
+      {loaded ? <ul className={styles.ul}>{Object.keys(filteredGamesList).length === 0 ? 'Nenhuma Notícia Encontrada' : filteredGamesList.map((item) => <NewsMount key={item.id} item={item} />)}</ul> : <LoadingScreen /> }
+      {/* {loaded ? <ul className={styles.ul}>{Object.keys(filteredGamesList).length === 0 ? 'Nenhuma Notícia Encontrada' : filteredGamesList.map((item) => <NewsMount key={item.id} item={item} />)}</ul> : <CardLoader /> } */}
     </section>
   );
 };

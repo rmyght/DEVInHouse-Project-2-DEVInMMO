@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom"
 import { GamesProvider, useGames } from "../../../contexts/games"
-import { LoadingScreen } from "../../helper"
+import { LoadingScreen } from "../LoadingScreen"
 import { DetailsPosts } from "./DetailsPosts";
 
 const DetailsTable = ({ requirement }) => {
@@ -47,7 +47,7 @@ const DetailsConstruct = ({ game }) => {
     <>
       <img src={actualimg} alt={game.title} width="350px" height="100%" />
       {/* <SlideShow ss={game.screenshots} /> */}
-      {game.screenshots.map((ss, index) => <SlideShow key={ss.id} ss={ss} tnail={game.thumbnail} actualimg={actualimg} setActualimg={setActualimg} />)}
+      {game.screenshots.map((ss) => <SlideShow key={ss.id} ss={ss} tnail={game.thumbnail} actualimg={actualimg} setActualimg={setActualimg} />)}
       <p>{`Title: ${game.title}`}</p>
       <p>{`Publisher: ${game.publisher}`}</p>
       <p>{`Plataform: ${game.platform}`}</p>
@@ -62,13 +62,13 @@ const DetailsConstruct = ({ game }) => {
 };
 
 const DetailsLoad = () => {
-  const { gamesList, loaded } = useGames();
-  console.log('Jogo: ', gamesList);
-  console.log(typeof (gamesList));
-  console.log(typeof (gamesList.minimum_system_requirements));
+  const { filteredGamesList, loaded } = useGames();
+  console.log('Jogo: ', filteredGamesList);
+  console.log(typeof (filteredGamesList));
+  console.log(typeof (filteredGamesList.minimum_system_requirements));
   return (
     <>
-      {loaded ? <DetailsConstruct game={gamesList} /> : <LoadingScreen />}
+      {loaded ? <DetailsConstruct game={filteredGamesList} /> : <LoadingScreen />}
     </>
   );
 };

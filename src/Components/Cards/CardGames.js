@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useGames } from "../../contexts/games";
-import { LoadingScreen } from "../helper";
+import { LoadingScreen } from "../pages/LoadingScreen";
 import CardLoader from "../pages/Loader/Loader";
 import styles from './Card.module.css';
 
@@ -21,14 +21,14 @@ const GamesMount = ({ item }) => {
 }
 
 export const CardGames = () => {
-  const { gamesList, loaded } = useGames();
+  const { filteredGamesList, loaded } = useGames();
   console.log('loaded', loaded);
-  console.log('Toda listagem:', gamesList);
-  console.log('Tipo da Listagem:', typeof(gamesList));
+  console.log('Toda listagem:', filteredGamesList);
+  console.log('Tipo da Listagem:', typeof(filteredGamesList));
   return (
     <section>
-      {loaded ? <ul className={styles.ul}>{Object.keys(gamesList).length === 0 ? 'Nenhum Jogo Encontrado' : gamesList.map((item) => <GamesMount key={item.id} item={item} />)}</ul> : <LoadingScreen />}
-      {/* <ul className={styles.ul}>{Object.keys(gamesList).length === 0 ? 'Nenhum Jogo Encontrado' : gamesList.map((item) => <GamesMount key={item.id} item={item} />)}</ul> */}
+      {loaded ? <ul className={styles.ul}>{Object.keys(filteredGamesList).length === 0 ? 'Nenhum Jogo Encontrado' : filteredGamesList.map((item) => <GamesMount key={item.id} item={item} />)}</ul> : <LoadingScreen />}
+      {/* <ul className={styles.ul}>{Object.keys(filteredGamesList).length === 0 ? 'Nenhum Jogo Encontrado' : filteredGamesList.map((item) => <GamesMount key={item.id} item={item} />)}</ul> */}
     </section>
   );
 };

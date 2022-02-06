@@ -61,9 +61,6 @@ const PostButton = ({ LSKey, elp, gameid, reload, setReload }) => {
     text: Yup.string().required('Campo obrigatório').max(30, 'Máximo 30 caracteres'),
   });
   return (
-    // <button type='submit' onClick={handleAddPost}>
-    //   Add Post
-    // </button>
     <Formik initialValues={{username: '', text: ''}} onSubmit={handleAddPost} validationSchema={schema} validateOnMount>
       {({ isSubmitting, isValid }) => (
         <Form>
@@ -95,7 +92,6 @@ const LikesButtons = ({ type, LSKey, reload, setReload, elp, post, item, gameid 
 };
 
 const CreatePosts = ({ LSKey, reload, setReload, elp, post, item, gameid }) => {
-  // const lsGame = _existsLSGame(elp, gameid)
   console.log('item: ', item)
   console.log('POST:', post);
   return (

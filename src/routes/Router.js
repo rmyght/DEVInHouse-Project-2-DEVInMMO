@@ -6,8 +6,7 @@ import { News } from '../Components/pages/News/News';
 
 export const Router = () => (
   <Routes>
-    <Route path="/" element={<h1>Home</h1>} />
-    <Route path="/news" element={<News />} />
+    <Route path="/" element={<News />} />
     <Route path="/games" element={<Games />} />
     <Route path="/games/gamedetails/:id" element={<GameDetails />} />
     <Route path="/about" element={<About />} />
