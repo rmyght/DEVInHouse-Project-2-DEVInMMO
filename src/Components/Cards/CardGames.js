@@ -3,20 +3,21 @@ import { useGames } from "../../contexts/games";
 import { LoadingScreen } from "../pages/LoadingScreen";
 import CardLoader from "../pages/Loader/Loader";
 import styles from './Card.module.css';
+import { CardImg, CardLi, CardLink, CardSDescription, CardTitle, CardUl } from "./Card.styles";
 
 const GamesMount = ({ item }) => {
   const navigate = useNavigate();
   return (
-    <li className={styles.li}>
-      <div className={styles.a} onClick={() => { navigate(`/games/gamedetails/${item.id}`) }} target="_blank" rel="noopener noreferrer">
-        <article className={styles.content}>
-          <img src={item.thumbnail} alt="Imagem" className={styles.img} />
-          <div className={styles.title}>{item.title}</div>
-          <div className={styles.sdesciption}>{item.short_description}</div>
+    <CardLi>
+      <CardLink onClick={() => { navigate(`/games/gamedetails/${item.id}`) }} target="_blank" rel="noopener noreferrer">
+        <article>
+          <CardImg src={item.thumbnail} alt="Imagem" className={styles.img} />
+          <CardTitle>{item.title}</CardTitle>
+          <CardSDescription>{item.short_description}</CardSDescription>
           {/* <div><a href={item.article_url} target="_blank" rel="noopener noreferrer"> Mais detalhes </a></div> */}
         </article>
-      </div>
-    </li>
+      </CardLink>
+    </CardLi>
   )
 }
 
@@ -27,7 +28,7 @@ export const CardGames = () => {
   console.log('Tipo da Listagem:', typeof(filteredGamesList));
   return (
     <section>
-      {loaded ? <ul className={styles.ul}>{Object.keys(filteredGamesList).length === 0 ? 'Nenhum Jogo Encontrado' : filteredGamesList.map((item) => <GamesMount key={item.id} item={item} />)}</ul> : <LoadingScreen />}
+      {loaded ? <CardUl>{Object.keys(filteredGamesList).length === 0 ? 'Nenhum Jogo Encontrado' : filteredGamesList.map((item) => <GamesMount key={item.id} item={item} />)}</CardUl> : <LoadingScreen />}
       {/* <ul className={styles.ul}>{Object.keys(filteredGamesList).length === 0 ? 'Nenhum Jogo Encontrado' : filteredGamesList.map((item) => <GamesMount key={item.id} item={item} />)}</ul> */}
     </section>
   );

@@ -1,9 +1,13 @@
+import { useTheme } from "styled-components";
+import { LinkMenu, ListItemMenu, UnListMenu } from "./Menu.styles";
+
 export const Menu = () => {
+  // const theme = useTheme();
   return (
-    <ul>
-      <li><a href='/'>News</a></li>
-      <li><a href='/games'>MMO Games</a></li>
-      <li><a href='/about'>About</a></li>
-    </ul>
+    <UnListMenu>
+      <ListItemMenu><LinkMenu href='/'>News</LinkMenu></ListItemMenu>
+      <ListItemMenu><LinkMenu href='/games'>MMO Games</LinkMenu></ListItemMenu>
+      <ListItemMenu><LinkMenu href='/about'>About</LinkMenu></ListItemMenu>
+    </UnListMenu>
   );
 }

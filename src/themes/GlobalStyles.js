@@ -10,11 +10,10 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 16px;
-    color: #333;
     font-family: 'Montserrat', sans-serif;
   }
   
   body {
-    background-color: #fefefc;
+    background-color: ${({ theme }) => theme.colors.bgcolor.main};
   }
 `;

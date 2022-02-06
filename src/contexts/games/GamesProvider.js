@@ -10,6 +10,7 @@ export const GamesProvider = ({ children, type }) => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const games = useRef([]);
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TYPE 2', type)
 
   useEffect(() => {
     // IIFE Imediately Invoked Function Expression
@@ -24,6 +25,7 @@ export const GamesProvider = ({ children, type }) => {
 
   useEffect(() => {
     setFilteredGamesList(filterListByPage(games.current, page));
+    //eslint-disable-next-line
   }, [page]);
 
   useEffect(() => {
