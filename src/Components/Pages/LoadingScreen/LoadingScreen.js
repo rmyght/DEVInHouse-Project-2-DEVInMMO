@@ -1,8 +1,9 @@
+import { LoadHeader } from "./LoadingScreen.styles"
 
+// Componente de Loading durante a espera de resposta da API.
 
 export const LoadingScreen = () => {
-  
   return (
-    <p style={{color: "red"}}>Loading...</p>
-  )
-}
+    <LoadHeader>Loading...</LoadHeader>
+  );
+};

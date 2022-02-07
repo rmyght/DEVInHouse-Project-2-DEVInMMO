@@ -5,6 +5,8 @@ import { PageSystem } from '../../PageSystem/PageSystem';
 import { SearchSystem } from '../../SearchSystem/SearchSystem';
 import { Header } from "./News.styles";
 
+// Componente que monta a estrutura da página de News
+
 export const News = () => {
   return (
     <GamesProvider type='latestnews'>

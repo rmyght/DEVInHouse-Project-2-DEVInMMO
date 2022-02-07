@@ -10,7 +10,7 @@ export const existsLS = (key) => localStorage.getItem(key);
 // Verifica se já existe determinado número de jogo no Local Storage
 export const existsLSGame = (localPosts, gameid) => {
   let localStorage = JSON.parse(localPosts);
-  return localStorage[gameid]
+  return localStorage[gameid];
 };
 
 // Seta um item em Local Storage

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// Styled Components do Menu
+
 export const UnListMenu = styled.ul`
   list-style-type: none;
   margin: 0;
@@ -8,11 +10,12 @@ export const UnListMenu = styled.ul`
   width: 100%;
   text-align: center;
   font-size: 2em;
-`
+`;
 
 export const ListItemMenu = styled.li`
   display: inline;
-`
+`;
+
 export const LinkMenu = styled.a`
   color: ${({ theme }) => theme.colors.main};
   text-decoration: none;

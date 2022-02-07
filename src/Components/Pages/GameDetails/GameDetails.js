@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom"
 import { GamesProvider, useGames } from "../../../contexts/games"
 import { LocalStorageProvider } from "../../../contexts/localStorage";
+import { DetailsPosts } from "../../DetailsPosts";
 import { LoadingScreen } from "../LoadingScreen"
-import { DetailsPosts } from "./DetailsPosts";
 import { DivContent, DivDesc, Header, HeaderFour, HeaderThree, ImgDiv, InfoDiv, ReqInfo, ReqTitle, Table, TableTitle } from "./GameDetails.styles";
+
+// Componentes que montam os detalhes dos jogos.
 
 const DetailsTable = ({ requirement }) => {
   console.log(requirement);
@@ -82,9 +84,6 @@ const DetailsConstruct = ({ game }) => {
 
 const ShowDetails = () => {
   const { filteredGamesList, loaded } = useGames();
-  // console.log('Jogo: ', filteredGamesList);
-  // console.log(typeof (filteredGamesList));
-  // console.log(typeof (filteredGamesList.minimum_system_requirements));
   return (
     <>
       {loaded ? <DetailsConstruct game={filteredGamesList} /> : <LoadingScreen />}
@@ -94,8 +93,6 @@ const ShowDetails = () => {
 
 export const GameDetails = () => {
   const { id } = useParams();
-  // console.log("Click OK");
-  // console.log('itemid', id);
   return (
     <>
       <GamesProvider type={`game?id=${id}`}>

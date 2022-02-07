@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+// Tema Global, aplicado em toda página.
+
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;

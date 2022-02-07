@@ -3,6 +3,7 @@ import { GamesContext } from ".";
 import { filterListByPage, filterListByTerm } from "../../Components/helper/utilGames";
 import { fetchGames } from "../../services/games-service";
 
+// Provider dos jogos, onde é pega as informações da API, filtrado os jogos por página e termo para que seja enviado para os componentes e utilizado por eles.
 
 export const GamesProvider = ({ children, type }) => {
   const [filteredGamesList, setFilteredGamesList] = useState([]);

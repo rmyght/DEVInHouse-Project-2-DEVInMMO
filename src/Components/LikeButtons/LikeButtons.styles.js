@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// Styled Components do LikeButtons
+
 export const LikeButton = styled.img`
   background-color: ${({ theme }) => theme.colors.alt};
   border-radius:20px;
@@ -10,4 +12,4 @@ export const LikeButton = styled.img`
     cursor: pointer;
     border-radius:20px;
   }
-`
+`;

@@ -1,2 +1,2 @@
-export * from './CardNews'
-export * from './CardGames'
+export * from './CardNews';
+export * from './CardGames';

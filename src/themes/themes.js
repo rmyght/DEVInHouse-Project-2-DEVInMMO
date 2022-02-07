@@ -1,3 +1,5 @@
+// Arquivo com os tipos de Temas, Main (Light) e Dark
+
 export const myMainTheme = {
   colors: {
     main: '#000000',

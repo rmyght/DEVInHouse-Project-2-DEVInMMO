@@ -1,3 +1,6 @@
+// Onde a mágica da consulta da API acontece.
+// A partir desse local é onde se faz a consulta da API com base no Type enviado pelos componentes (News, Games e GameDetails)
+
 export const fetchGames = async (type) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_URL}/${type}`, {

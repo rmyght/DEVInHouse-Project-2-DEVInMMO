@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { PostFormik } from "../../PostFormik/PostForm";
-import { existsLS, existsLSGame } from "../../helper/utilLocalStorage";
-import { useLocalStorage } from "../../../contexts/localStorage";
-import { LikeButtons } from "../../LikeButtons/LikeButtons";
+import { PostFormik } from "../PostFormik/PostForm";
+import { existsLS, existsLSGame } from "../helper/utilLocalStorage";
+import { useLocalStorage } from "../../contexts/localStorage";
+import { LikeButtons } from "../LikeButtons/LikeButtons";
 import { GameCommentLine, GameCommentsName, GameCommentsHeader, GameCommentsSection, GameCommentsText, GameCommentsNameTitle, GameCommentsTextTitle, GameCommentsLike } from "./DetailsPosts.styles";
+
+// Componentes de montam os detalhes dos posts (comentários)
 
 const GameComments = ({ LSKey, reload, setReload, elp, post, item, gameid }) => {
   console.log('item: ', item)
@@ -43,7 +45,7 @@ export const DetailsPosts = ({ gameid }) => {
       <GameCommentsSection>
         <GameCommentsHeader>Comments:</GameCommentsHeader>
         <GameCommentLine />
-        {existsLocalGamePosts ? Object.keys(existsLocalGamePosts).map((item, index) => <GameComments LSKey={LSKey} reload={reload} setReload={setReload} key={index} elp={existsLocalPosts} post={existsLocalGamePosts[item]} item={item} gameid={gameid} />) : <h3>Nobody make a Comment... :(</h3>}
+        {existsLocalGamePosts ? Object.keys(existsLocalGamePosts).map((item, index) => <GameComments LSKey={LSKey} reload={reload} setReload={setReload} key={index} elp={existsLocalPosts} post={existsLocalGamePosts[item]} item={item} gameid={gameid} />) : <h3>No Comments... :(</h3>}
       </GameCommentsSection>
     </>
   );

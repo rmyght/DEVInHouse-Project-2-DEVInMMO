@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// Styles Componets para o ChangeTheme
+
 export const ChangeThemeIco = styled.img`
   position: absolute;
   top: 0;
@@ -10,4 +12,4 @@ export const ChangeThemeIco = styled.img`
     cursor: pointer;
     border-radius:25px;
   }
-`
+`;

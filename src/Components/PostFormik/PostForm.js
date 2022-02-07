@@ -3,6 +3,8 @@ import * as Yup from 'yup';
 import { existsLSGame, returnNewPostNumber, setItemLS } from "../helper/utilLocalStorage";
 import { FormDiv, FormDivField } from "./PostForm.styled";
 
+// Componente que faz a lógica de salvar os novos Posts no LocalStorage
+// Este comentente também utilize o Formik para enviar o formulário e o Yup para validar as informações preenchidas
 
 export const PostFormik = ({ LSKey, elp, gameid, reload, setReload }) => {
   const handleAddPost = ({ username, text, email }, { resetForm }) => {
@@ -17,7 +19,7 @@ export const PostFormik = ({ LSKey, elp, gameid, reload, setReload }) => {
         const newPostID = 'post-1';
         newGameLocalPost = { ...newGameLocalPost, [`${gameid}`]: { [`${newPostID}`]: { username: username, text: text, email: email, likes: 0 } } };
         setItemLS(LSKey, JSON.stringify(newGameLocalPost));
-      }
+      };
     } else {
       const newPostID = 'post-1';
       let objectTask = { [`${gameid}`]: { [`${newPostID}`]: { username: username, text: text, email: email, likes: 0 } } };
@@ -34,7 +36,6 @@ export const PostFormik = ({ LSKey, elp, gameid, reload, setReload }) => {
   return (
     <Formik initialValues={{ username: '', email: '', text: '' }} onSubmit={handleAddPost} validationSchema={schema} validateOnMount>
       {({ isSubmitting, isValid }) => (
-        
         <Form style={{ display: 'block' }}>
           <FormDiv>
             <FormDivField>

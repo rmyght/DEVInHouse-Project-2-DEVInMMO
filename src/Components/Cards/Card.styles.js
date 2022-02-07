@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// Styles Componets para os Cards
+
 export const CardUl = styled.ul`
   list-style-type: none;
   padding: 0;
@@ -8,7 +10,7 @@ export const CardUl = styled.ul`
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
-`
+`;
 
 export const CardLink = styled.a`
   &:link {
@@ -19,7 +21,7 @@ export const CardLink = styled.a`
   &:visited {
     color: ${({ theme }) => theme.colors.link.visited};
   }
-`
+`;
 
 export const CardLi = styled.li`
   background-color: ${({ theme }) => theme.colors.link.light};
@@ -35,21 +37,21 @@ export const CardLi = styled.li`
     box-shadow: 1px 1px 6px 6px ${({ theme }) => theme.colors.card.hover};
     cursor: pointer;
   }
-`
+`;
 
 export const CardImg = styled.img`
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0px;
   width: 100%;
-`
+`;
+
 export const CardTitle = styled.div`
   color: ${({ theme }) => theme.colors.main};
   text-align: justify;
   font-size: 1vw;
-  // font-size: 18px;
   font-weight: bold;
-`
+`;
 
 export const CardSDescription = styled.div`
   color: ${({ theme }) => theme.colors.main};
@@ -60,5 +62,4 @@ export const CardSDescription = styled.div`
   margin-top: 10px;
   text-align: justify;
   font-size: 0.8vw;
-  // font-size: 18px;
-`
+`;
