@@ -1,6 +1,7 @@
 export const myMainTheme = {
   colors: {
     main: '#000000',
+    alt: '#ffffff',
     bgcolor: {
       main: '#fefefc',
       light: '#f7f7f7',
@@ -24,6 +25,7 @@ export const myMainTheme = {
 export const myDarkTheme = {
   colors: {
     main: '#ffffff',
+    alt: '#ffffff',
     bgcolor: {
       main: '#010103',
       light: '#080808',

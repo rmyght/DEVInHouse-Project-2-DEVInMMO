@@ -3,17 +3,19 @@ import { PostFormik } from "../../PostFormik/PostForm";
 import { existsLS, existsLSGame } from "../../helper/utilLocalStorage";
 import { useLocalStorage } from "../../../contexts/localStorage";
 import { LikeButtons } from "../../LikeButtons/LikeButtons";
-import { GameCommentLine, GameCommentsDiv, GameCommentsHeader, GameCommentsSection } from "./DetailsPosts.styles";
+import { GameCommentLine, GameCommentsName, GameCommentsHeader, GameCommentsSection, GameCommentsText, GameCommentsNameTitle, GameCommentsTextTitle, GameCommentsLike } from "./DetailsPosts.styles";
 
 const GameComments = ({ LSKey, reload, setReload, elp, post, item, gameid }) => {
   console.log('item: ', item)
   console.log('POST:', post);
   return (
     <div>
-      <GameCommentsDiv>Nome: {post.username}</GameCommentsDiv>
-      <div>Comentário: {post.text}</div>
-      <GameCommentsDiv>{post.likes}</GameCommentsDiv>
+      <GameCommentsNameTitle>Nome:</GameCommentsNameTitle>
+      <GameCommentsName>{post.username}</GameCommentsName>
+      <GameCommentsTextTitle>Comentário:</GameCommentsTextTitle>
+      <GameCommentsText>{post.text}</GameCommentsText>
       <LikeButtons type='Like' LSKey={LSKey} reload={reload} setReload={setReload} elp={elp} post={post} item={item} gameid={gameid} />
+      <GameCommentsLike>{post.likes}</GameCommentsLike>
       <LikeButtons type='Dislike' LSKey={LSKey} reload={reload} setReload={setReload} elp={elp} post={post} item={item} gameid={gameid} />
       <GameCommentLine />
     </div>
