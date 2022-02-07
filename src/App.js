@@ -7,11 +7,19 @@ import { ThemeProvider } from 'styled-components';
 import { myDarkTheme, myMainTheme } from './themes/themes';
 import { ChangeTheme } from './Components/ChangeTheme/ChangeTheme';
 import { HorizontalLine } from './Components/HorizontalLine/HorizontalLine';
+import { existsLS, setItemLS } from './Components/helper/utilLocalStorage';
 
 function App() {
-  const [main, setMain] = useState(true);
+  const existsTheme = existsLS('theme');
+  let actualTheme = 'main';
+  if (!existsTheme) {
+    setItemLS('theme', 'main');
+  } else {
+    actualTheme = existsTheme;
+  };
+  const [main, setMain] = useState(actualTheme);
   return (
-    <ThemeProvider theme={main ? myMainTheme : myDarkTheme}>
+    <ThemeProvider theme={main === 'main' ? myMainTheme : myDarkTheme}>
       <GlobalStyle />
       <Menu />
       <HorizontalLine />
