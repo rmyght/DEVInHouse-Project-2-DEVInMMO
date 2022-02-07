@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
 import { existsLSGame, returnNewPostNumber, setItemLS } from "../helper/utilLocalStorage";
+import { FormDiv, FormDivField } from "./PostForm.styled";
 
 
 export const PostFormik = ({ LSKey, elp, gameid, reload, setReload }) => {
@@ -33,15 +34,23 @@ export const PostFormik = ({ LSKey, elp, gameid, reload, setReload }) => {
   return (
     <Formik initialValues={{ username: '', email: '', text: '' }} onSubmit={handleAddPost} validationSchema={schema} validateOnMount>
       {({ isSubmitting, isValid }) => (
-        <Form>
-          {console.log('isValid', isValid)}
-          <Field name="username" placeholder="Name" />
-          <ErrorMessage name="username" style={{ color: 'red' }} component="span" />
-          <Field name="email" placeholder="E-Mail" />
-          <ErrorMessage name="email" style={{ color: 'red' }} component="span" />
-          <Field name="text" placeholder="Comment" component="textarea" />
-          <ErrorMessage name="text" style={{ color: 'red' }} component="span" />
-          <button type='submit' disabled={isSubmitting || !isValid}> Add Post</button>
+        
+        <Form style={{ display: 'block' }}>
+          <FormDiv>
+            <FormDivField>
+              <Field name="username" placeholder="Name" />
+              <ErrorMessage name="username" style={{ color: 'red' }} component="span" />
+            </FormDivField>
+            <FormDivField>
+              <Field name="email" placeholder="E-Mail" />
+              <ErrorMessage name="email" style={{ color: 'red' }} component="span" />
+            </FormDivField>
+            <FormDivField>
+            <Field name="text" placeholder="Comment" component="textarea" rows="3" cols="80" />
+              <ErrorMessage name="text" style={{ color: 'red' }} component="span" />
+            </FormDivField>
+            <div><button type='submit' disabled={isSubmitting || !isValid}> Add Post</button></div>
+          </FormDiv>
         </Form>
       )}
     </Formik>

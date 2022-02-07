@@ -4,7 +4,7 @@ import { GamesProvider, useGames } from "../../../contexts/games"
 import { LocalStorageProvider } from "../../../contexts/localStorage";
 import { LoadingScreen } from "../LoadingScreen"
 import { DetailsPosts } from "./DetailsPosts";
-import { Header, ReqInfo, ReqTitle, Table, TableTitle } from "./GameDetails.styles";
+import { DivContent, DivDesc, Header, HeaderFour, HeaderThree, ImgDiv, InfoDiv, ReqInfo, ReqTitle, Table, TableTitle } from "./GameDetails.styles";
 
 const DetailsTable = ({ requirement }) => {
   console.log(requirement);
@@ -47,15 +47,31 @@ const DetailsConstruct = ({ game }) => {
   const [actualimg, setActualimg] = useState(game.thumbnail);
   return (
     <>
-      <img src={actualimg} alt={game.title} width="350px" height="100%" />
-      {/* <SlideShow ss={game.screenshots} /> */}
-      {game.screenshots.map((ss) => <SlideShow key={ss.id} ss={ss} tnail={game.thumbnail} actualimg={actualimg} setActualimg={setActualimg} />)}
-      <p>{`Title: ${game.title}`}</p>
-      <p>{`Release Date: ${game.release_date}`}</p>
-      <p>{`Publisher: ${game.publisher}`}</p>
-      <p>{`Plataform: ${game.platform}`}</p>
-      <p>{`Status: ${game.status}`}</p>
-      <p>{`Description: ${game.short_description}`}</p>
+      <InfoDiv>
+        <Header>{`${game.title} (${game.release_date.substring(0, 4).trim()})`}</Header>
+        <ImgDiv>
+          <img src={actualimg} alt={game.title} width="450px" height="100%" />
+          <div>{game.screenshots.map((ss) => <SlideShow key={ss.id} ss={ss} tnail={game.thumbnail} actualimg={actualimg} setActualimg={setActualimg} />)}</div>
+        </ImgDiv>
+        <div>
+          <HeaderFour>Release Date:</HeaderFour>
+          <DivContent>{game.release_date}</DivContent>
+        </div>
+        <div>
+          <HeaderFour>Publisher:</HeaderFour>
+          <DivContent>{game.publisher}</DivContent>
+        </div>
+        <div>
+          <HeaderFour>Plataform:</HeaderFour>
+          <DivContent>{game.platform}</DivContent>
+        </div>
+        <div>
+          <HeaderFour>Status:</HeaderFour>
+          <DivContent>{game.status}</DivContent>
+        </div>
+        <HeaderThree>Description:</HeaderThree>
+        <DivDesc>{game.short_description}</DivDesc>
+      </InfoDiv>
       <Table>
         <DetailsTable requirement={game.minimum_system_requirements} />
       </Table>
@@ -84,7 +100,6 @@ export const GameDetails = () => {
     <>
       <GamesProvider type={`game?id=${id}`}>
         <LocalStorageProvider>
-          <Header>Game Details</Header>
           <ShowDetails />
         </LocalStorageProvider>
       </GamesProvider>

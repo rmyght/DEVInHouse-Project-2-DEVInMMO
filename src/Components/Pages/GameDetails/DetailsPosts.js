@@ -10,9 +10,9 @@ const GameComments = ({ LSKey, reload, setReload, elp, post, item, gameid }) => 
   console.log('POST:', post);
   return (
     <div>
-      <GameCommentsNameTitle>Nome:</GameCommentsNameTitle>
+      <GameCommentsNameTitle>Name:</GameCommentsNameTitle>
       <GameCommentsName>{post.username}</GameCommentsName>
-      <GameCommentsTextTitle>Comentário:</GameCommentsTextTitle>
+      <GameCommentsTextTitle>Comment:</GameCommentsTextTitle>
       <GameCommentsText>{post.text}</GameCommentsText>
       <LikeButtons type='Like' LSKey={LSKey} reload={reload} setReload={setReload} elp={elp} post={post} item={item} gameid={gameid} />
       <GameCommentsLike>{post.likes}</GameCommentsLike>
@@ -38,11 +38,11 @@ export const DetailsPosts = ({ gameid }) => {
   // }, [reload]);
   return (
     <>
-      {/* <PostForm /> */}
       <p />
       <PostFormik elp={existsLocalPosts} LSKey={LSKey} gameid={gameid} reload={reload} setReload={setReload} />
       <GameCommentsSection>
         <GameCommentsHeader>Comments:</GameCommentsHeader>
+        <GameCommentLine />
         {existsLocalGamePosts ? Object.keys(existsLocalGamePosts).map((item, index) => <GameComments LSKey={LSKey} reload={reload} setReload={setReload} key={index} elp={existsLocalPosts} post={existsLocalGamePosts[item]} item={item} gameid={gameid} />) : <h3>Nobody make a Comment... :(</h3>}
       </GameCommentsSection>
     </>
