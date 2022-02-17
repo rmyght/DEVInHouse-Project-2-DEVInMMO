@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PostFormik } from "../PostFormik/PostForm";
-import { existsLS, existsLSGame } from "../helper/utilLocalStorage";
+import { existsLS, existsLSGame } from "../../helper/utilLocalStorage";
 import { useLocalStorage } from "../../contexts/localStorage";
 import { LikeButtons } from "../LikeButtons/LikeButtons";
 import { GameCommentLine, GameCommentsName, GameCommentsHeader, GameCommentsSection, GameCommentsText, GameCommentsNameTitle, GameCommentsTextTitle, GameCommentsLike } from "./DetailsPosts.styles";

@@ -1,4 +1,4 @@
-import { setItemLS } from "../helper/utilLocalStorage";
+import { setItemLS } from "../../helper/utilLocalStorage";
 import { ChangeThemeIco } from "./ChangeTheme.styles";
 import darkMode from "./icons/dark_mode.svg";
 import lightMode from "./icons/light_mode.svg";

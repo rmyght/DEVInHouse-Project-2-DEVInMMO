@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
-import { existsLSGame, returnNewPostNumber, setItemLS } from "../helper/utilLocalStorage";
+import { existsLSGame, returnNewPostNumber, setItemLS } from "../../helper/utilLocalStorage";
 import { FormDiv, FormDivField } from "./PostForm.styled";
 
 // Componente que faz a lógica de salvar os novos Posts no LocalStorage

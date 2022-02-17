@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import { myDarkTheme, myMainTheme } from './themes/themes';
 import { ChangeTheme } from './Components/ChangeTheme/ChangeTheme';
 import { HorizontalLine } from './Components/HorizontalLine/HorizontalLine';
-import { existsLS, setItemLS } from './Components/helper/utilLocalStorage';
+import { existsLS, setItemLS } from './helper/utilLocalStorage';
 
 function App() {
   const existsTheme = existsLS('theme');
@@ -20,11 +20,11 @@ function App() {
   const [main, setMain] = useState(actualTheme);
   return (
     <ThemeProvider theme={main === 'main' ? myMainTheme : myDarkTheme}>
-      <GlobalStyle />
-      <Menu />
-      <HorizontalLine />
-      <ChangeTheme main={main} setMain={setMain} />
       <BrowserRouter>
+        <GlobalStyle />
+        <Menu />
+        <HorizontalLine />
+        <ChangeTheme main={main} setMain={setMain} />
         <Router />
       </BrowserRouter>
     </ThemeProvider>

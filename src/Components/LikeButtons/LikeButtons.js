@@ -1,4 +1,4 @@
-import { setItemLS } from "../helper/utilLocalStorage";
+import { setItemLS } from "../../helper/utilLocalStorage";
 import dark_like from "./icons/thumb_up_black.svg";
 import dark_dislike from "./icons/thumb_down_black.svg";
 import { LikeButton } from "./LikeButtons.styles";

@@ -5,8 +5,8 @@ import { LinkMenu, ListItemMenu, UnListMenu } from "./Menu.styles";
 export const Menu = () => {
   return (
     <UnListMenu>
-      <ListItemMenu><LinkMenu href='/'>News</LinkMenu></ListItemMenu>
-      <ListItemMenu><LinkMenu href='/games'>MMO Games</LinkMenu></ListItemMenu>
+      <ListItemMenu><LinkMenu to="/">News</LinkMenu></ListItemMenu>
+      <ListItemMenu><LinkMenu to="/games">MMO Games</LinkMenu></ListItemMenu>
     </UnListMenu>
   );
 }
