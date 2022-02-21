@@ -10,7 +10,7 @@ export const UnListMenu = styled.ul`
   top: 0;
   width: 100%;
   text-align: center;
-  font-size: 10em;
+  font-size: 2em;
 `;
 
 export const ListItemMenu = styled.li`
