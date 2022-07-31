@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    transition: color 0.3s ease-in-out, background-color 0.4s ease-in-out;
     background-color: ${({ theme }) => theme.colors.bgcolor.main};
   }
 `;
